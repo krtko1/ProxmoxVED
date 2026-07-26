@@ -1,0 +1,45 @@
+{
+  "name": "Bluesky PDS",
+  "slug": "bluesky",
+  "categories": [1],
+  "date_created": "2026-07-26",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "has_arm": true,
+  "interface_port": 443,
+  "documentation": "https://github.com/bluesky-social/pds/blob/main/README.md",
+  "website": "https://bsky.app/",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/bluesky.webp",
+  "config_path": "/pds/pds.env",
+  "description": "Self-hosted Personal Data Server (PDS) for Bluesky (AT Protocol). This installer builds and runs the PDS Node service directly (no Docker) and installs Caddy to listen on high ports (8080/8443).",
+
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "install/bluesky-install.sh",
+      "config_path": "/pds/pds.env",
+      "resources": {
+        "cpu": 1,
+        "ram": 1024,
+        "hdd": 20,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "This installer runs the PDS service directly (Node.js) and installs Caddy to listen on high ports (8080/8443). Forward host ports 80->8080 and 443->8443 to the container (host-level NAT) so HTTP/TLS validation and external access work correctly.",
+      "type": "warning"
+    },
+    {
+      "text": "You must create DNS A records for your domain and wildcard (*.domain) before installation.",
+      "type": "info"
+    }
+  ]
+}
