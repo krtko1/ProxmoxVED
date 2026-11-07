@@ -8,12 +8,13 @@
     "type": "ct",
     "updateable": true,
     "privileged": false,
-    "has_arm": false,
+    "architectures": ["amd64"],
     "interface_port": 4000,
     "documentation": "https://github.com/colanode/colanode/blob/main/hosting/docker",
     "website": "https://colanode.com/",
+    "repository": "https://github.com/colanode/colanode",
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/colanode.webp",
-    "description": "Open-source, local-first collaboration workspace — a self-hosted Slack and Notion alternative with real-time chat, rich text pages, customizable databases, and file management.",
+    "description": "Colanode is an open-source, local-first collaboration workspace and a self-hosted alternative to Slack and Notion, with real-time chat, rich text pages, customizable databases and file management.",
     "install_methods": [
         {
             "type": "default",
@@ -34,20 +35,8 @@
     },
     "notes": [
         {
-            "text": "Before using the app: download and import the self-signed certificate into your browser. Navigate to https://YOUR_IP:4000/colanode.crt and install it as a trusted CA. This is required for Service Worker and OPFS storage to work.",
-            "type": "warning"
-        },
-        {
-            "text": "Access the web interface at https://YOUR_IP:4000. When adding a server in the desktop or mobile app, enter https://YOUR_IP:4000 as the server URL.",
+            "text": "There is no default account: register one in the web UI on first access.",
             "type": "info"
-        },
-        {
-            "text": "No default credentials — open the web UI and register a new account on first access.",
-            "type": "info"
-        },
-        {
-            "text": "Requires at least 4 GB RAM for the build process.",
-            "type": "warning"
         }
     ]
 }

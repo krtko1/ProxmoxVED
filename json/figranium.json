@@ -1,0 +1,53 @@
+{
+  "name": "Figranium",
+  "slug": "figranium",
+  "categories": [
+    19
+  ],
+  "date_created": "2026-10-04",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 11345,
+  "documentation": "https://figranium.dev/docs",
+  "website": "https://figranium.dev/",
+  "repository": "https://github.com/figranium/figranium",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/figranium.webp",
+  "description": "Figranium is a self-hosted browser automation platform. You build workflows from blocks such as navigate, click, type and extract in a visual editor, run them in headless Chromium, and trigger them from the UI, on a schedule or through the REST API.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/figranium.sh",
+      "config_path": "/opt/figranium_data/.env",
+      "resources": {
+        "cpu": 2,
+        "ram": 3072,
+        "hdd": 10,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "There is no default account: the first visitor becomes the administrator. Create the account right after the install.",
+      "type": "warning"
+    },
+    {
+      "text": "Workflows cannot open LAN addresses by default. To automate local services, set ALLOW_PRIVATE_NETWORKS=true in /opt/figranium_data/.env and run systemctl restart figranium.",
+      "type": "info"
+    },
+    {
+      "text": "To run tasks over the REST API, generate a key under Settings > API Keys and send it in the x-api-key header.",
+      "type": "info"
+    }
+  ]
+}

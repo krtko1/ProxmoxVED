@@ -5,8 +5,6 @@
             "includeGlobs": [
                 "ct/**",
                 "install/**",
-                "misc/**",
-                "turnkey/**",
                 "vm/**"
             ],
             "excludeGlobs": []
@@ -18,15 +16,9 @@
             "includeGlobs": [
                 "ct/**",
                 "install/**",
-                "misc/**",
-                "turnkey/**",
                 "vm/**"
             ],
-            "excludeGlobs": [
-                "misc/build.func",
-                "misc/install.func",
-                "misc/api.func"
-            ]
+            "excludeGlobs": []
         }
     ],
     "delete script": [
@@ -35,8 +27,6 @@
             "includeGlobs": [
                 "ct/**",
                 "install/**",
-                "misc/**",
-                "turnkey/**",
                 "vm/**"
             ],
             "excludeGlobs": []
@@ -47,39 +37,7 @@
             "fileStatus": null,
             "includeGlobs": [
                 "*.md",
-                ".github/**",
-                "misc/*.func",
-                "misc/create_lxc.sh",
-                "api/**"
-            ],
-            "excludeGlobs": []
-        }
-    ],
-    "core": [
-        {
-            "fileStatus": null,
-            "includeGlobs": [
-                "misc/*.func",
-                "misc/create_lxc.sh"
-            ],
-            "excludeGlobs": []
-        }
-    ],
-    "website": [
-        {
-            "fileStatus": null,
-            "includeGlobs": [
-                "frontend/**"
-            ],
-            "excludeGlobs": []
-        }
-    ],
-    "api": [
-        {
-            "fileStatus": null,
-            "includeGlobs": [
-                "api/**",
-                "misc/api.func"
+                ".github/**"
             ],
             "excludeGlobs": []
         }
@@ -98,17 +56,6 @@
             "fileStatus": "modified",
             "includeGlobs": [
                 "json/**"
-            ],
-            "excludeGlobs": []
-        }
-    ],
-    "high risk": [
-        {
-            "fileStatus": null,
-            "includeGlobs": [
-                "misc/build.func",
-                "misc/install.func",
-                "misc/create_lxc.sh"
             ],
             "excludeGlobs": []
         }

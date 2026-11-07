@@ -8,10 +8,11 @@
   "type": "ct",
   "updateable": true,
   "privileged": false,
-  "has_arm": false,
+  "architectures": ["amd64"],
   "interface_port": 80,
   "documentation": "https://github.com/simple-login/app/blob/master/docs/",
   "website": "https://simplelogin.io/",
+  "repository": "https://github.com/simple-login/app",
   "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/simplelogin.webp",
   "description": "SimpleLogin is an open-source email alias solution that lets you create anonymous email aliases to protect your real email address from spam, trackers and data breaches.",
   "install_methods": [
@@ -34,19 +35,15 @@
   },
   "notes": [
     {
-      "text": "After installation, update EMAIL_DOMAIN and URL in /opt/simplelogin/.env with your actual domain and configure DNS (MX, SPF, DKIM) accordingly.",
+      "text": "Set EMAIL_DOMAIN and URL in /opt/simplelogin/.env and add MX, SPF, DKIM and PTR records for your domain. The DKIM record is in /opt/simplelogin/dkim/dkim.dns.txt (replace EMAIL_DOMAIN in it).",
       "type": "warning"
     },
     {
-      "text": "A working SMTP setup (Postfix + valid domain/DNS) is required. Registration sends an activation email that must be delivered.",
+      "text": "Mail delivery must work, or the activation email after registration never arrives. Set myhostname, mydomain and mynetworks in /etc/postfix/main.cf, then restart postfix.",
       "type": "warning"
     },
     {
-      "text": "DKIM keys are generated at /opt/simplelogin/dkim/. Add the public key as a TXT record: dkim._domainkey.yourdomain.com",
-      "type": "info"
-    },
-    {
-      "text": "Create your first admin account by visiting the web interface and registering.",
+      "text": "There is no default login: register the first admin account in the web interface.",
       "type": "info"
     }
   ]

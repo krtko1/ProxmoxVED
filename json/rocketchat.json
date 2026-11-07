@@ -1,0 +1,58 @@
+{
+    "name": "Rocket.Chat",
+    "slug": "rocketchat",
+    "categories": [
+        22
+    ],
+    "date_created": "2026-09-09",
+    "type": "ct",
+    "updateable": true,
+    "privileged": false,
+    "architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "interface_port": 3000,
+    "documentation": "https://docs.rocket.chat/docs/deploy-rocketchat",
+    "website": "https://www.rocket.chat/",
+    "repository": "https://github.com/RocketChat/Rocket.Chat",
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/rocket-chat.webp",
+    "description": "Rocket.Chat is an open-source communications platform for team chat, channels, direct messages, file sharing, voice and video calls, and omnichannel customer support.",
+    "install_methods": [
+        {
+            "type": "default",
+            "script": "ct/rocketchat.sh",
+            "config_path": "/etc/rocketchat/rocketchat.env",
+            "resources": {
+                "cpu": 2,
+                "ram": 4096,
+                "hdd": 20,
+                "os": "Debian",
+                "version": "13"
+            }
+        }
+    ],
+    "default_credentials": {
+        "username": "admin",
+        "password": null
+    },
+    "app_vars": [
+        {
+            "name": "var_admin_email",
+            "label": "Admin Email",
+            "type": "text",
+            "default": "admin@example.com",
+            "help": "Email address for the generated admin account. Rocket.Chat needs a valid address here; it is not used to send mail unless you configure SMTP."
+        }
+    ],
+    "notes": [
+        {
+            "text": "Log in as `admin` with the generated password from `~/rocketchat.creds` in the container. Change it, and set a real admin email under Admin > Users if you kept admin@example.com.",
+            "type": "info"
+        },
+        {
+            "text": "ROOT_URL in /etc/rocketchat/rocketchat.env is the container IP. Change it to the public URL and run `systemctl restart rocketchat` before using a domain or reverse proxy, or logins and uploads break.",
+            "type": "info"
+        }
+    ]
+}

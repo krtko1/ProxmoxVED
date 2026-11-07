@@ -1,0 +1,51 @@
+{
+  "name": "Nextcloud AIO",
+  "slug": "nextcloud-aio-vm",
+  "categories": [
+    2
+  ],
+  "date_created": "2026-10-08",
+  "type": "vm",
+  "updateable": false,
+  "privileged": false,
+  "architectures": [
+    "amd64"
+  ],
+  "interface_port": 8080,
+  "documentation": "https://github.com/nextcloud/all-in-one",
+  "website": "https://nextcloud.com/all-in-one/",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/nextcloud.webp",
+  "description": "Nextcloud All-in-One is the official Nextcloud deployment: one master container manages Nextcloud, database, Office, Talk and backups. This VM runs it on a Debian or Ubuntu cloud image with Docker.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "vm/nextcloud-aio-vm.sh",
+      "config_path": "",
+      "resources": {
+        "cpu": 2,
+        "ram": 4096,
+        "hdd": 32,
+        "os": null,
+        "version": null
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Nextcloud AIO needs a domain with a valid certificate and does not work on a bare IP. For a VM that works on an IP straight away, use the TurnKey-based nextcloud-vm instead.",
+      "type": "warning"
+    },
+    {
+      "text": "Finish the setup at https://<VM-IP>:8080 with the AIO password: `docker exec nextcloud-aio-mastercontainer grep password /mnt/docker-aio-config/data/configuration.json`",
+      "type": "info"
+    },
+    {
+      "text": "If you use Cloud-init, checkout cloud-init discussion: `https://github.com/community-scripts/ProxmoxVE/discussions/272`",
+      "type": "info"
+    }
+  ]
+}

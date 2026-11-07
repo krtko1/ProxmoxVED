@@ -8,10 +8,11 @@
   "type": "ct",
   "updateable": true,
   "privileged": false,
-  "has_arm": false,
+  "architectures": ["amd64"],
   "interface_port": 41337,
   "documentation": "https://epicgames.github.io/lore/",
   "website": "https://epicgames.github.io/lore/",
+  "repository": "https://github.com/EpicGames/lore",
   "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/lore.webp",
   "description": "Lore is Epic Games' open-source, centralized, self-hostable version control server. Teams push to, clone from, and resolve conflicts through the loreserver endpoint over QUIC and gRPC, backed by durable local-disk storage.",
   "install_methods": [
@@ -34,27 +35,15 @@
   },
   "notes": [
     {
-      "text": "Lore is pre-1.0: on-disk formats may still change between versions, though committed-data durability is guaranteed. Intended for the experimental VED repo only.",
+      "text": "Authentication is off, so anyone who reaches port 41337 can connect. Set up JWT verification under [server.auth.jwk] in /opt/lore/local.toml before exposing it.",
       "type": "warning"
     },
     {
-      "text": "Disk usage scales with total repository size. The default 20 GB is a starting point; size the container to your data.",
+      "text": "Developers connect with the lore client CLI on port 41337 (TCP and UDP) and must trust the self-signed certificate in /etc/ssl/lore.",
       "type": "info"
     },
     {
-      "text": "Ports: 41337 (main endpoint, gRPC over TCP + QUIC over UDP), 41339 (HTTP health check), 41340 (internal mTLS replication, disabled by default).",
-      "type": "info"
-    },
-    {
-      "text": "A self-signed TLS certificate is generated at install (/etc/ssl/lore). Clients must trust it or be configured to accept it.",
-      "type": "info"
-    },
-    {
-      "text": "This is the Lore SERVER (loreserver). Developers connect to it with the 'lore' client CLI.",
-      "type": "info"
-    },
-    {
-      "text": "Authentication is disabled by default (demo mode): the public endpoint accepts unauthenticated clients. Enable JWT verification via [server.auth.jwk] against an external identity provider in /opt/lore/local.toml before exposing it.",
+      "text": "Lore is pre-1.0, so its on-disk format may still change between versions.",
       "type": "warning"
     }
   ]

@@ -1,0 +1,50 @@
+{
+  "name": "Kanidm",
+  "slug": "kanidm",
+  "categories": [
+    6
+  ],
+  "date_created": "2026-07-31",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "architectures": ["amd64", "arm64"],
+  "interface_port": 8443,
+  "documentation": "https://kanidm.github.io/kanidm/stable/",
+  "website": "https://kanidm.com/",
+  "repository": "https://github.com/kanidm/kanidm",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/kanidm.webp",
+  "description": "Kanidm is a modern, simple and secure identity management platform written in Rust. It provides OAuth2/OIDC, LDAP, RADIUS and Unix (PAM/nsswitch) authentication, WebAuthn/passkey support and a self-service web portal for managing people, groups and service accounts.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/kanidm.sh",
+      "config_path": "/etc/kanidm/server.toml",
+      "resources": {
+        "cpu": 4,
+        "ram": 4096,
+        "hdd": 20,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Kanidm needs a domain name, not a bare IP. Open https://kanidm.<IP>.nip.io:8443 and accept the self-signed certificate.",
+      "type": "info"
+    },
+    {
+      "text": "To use your own domain, or if your DNS blocks nip.io, set domain and origin in /etc/kanidm/server.toml before creating accounts. Changing them later needs a domain rename.",
+      "type": "warning"
+    },
+    {
+      "text": "Create the admin passwords inside the container with kanidmd recover-account idm_admin (signs in to the web portal) and kanidmd recover-account admin.",
+      "type": "info"
+    }
+  ]
+}

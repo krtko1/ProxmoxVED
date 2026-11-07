@@ -2,7 +2,7 @@
 
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: MickLesk (CanbiZ)
-# License: MIT | https://github.com/community-scripts/ProxmoxVED/raw/main/LICENSE
+# License: MIT | https://github.com/community-scripts/DevScripts/raw/main/LICENSE
 # Source: https://castopod.org/
 
 source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
@@ -49,7 +49,7 @@ CASTOPOD_SALT="$(openssl rand -hex 32)"
 
 cat <<EOF >/opt/castopod/.env
 app.baseURL="http://${LOCAL_IP}/"
-media.baseURL="http://${LOCAL_IP}/media/"
+media.baseURL="http://${LOCAL_IP}/"
 app.forceGlobalSecureRequests=false
 admin.gateway="cp-admin"
 auth.gateway="cp-auth"

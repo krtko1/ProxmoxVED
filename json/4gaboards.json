@@ -1,0 +1,53 @@
+{
+  "name": "4ga Boards",
+  "slug": "4gaboards",
+  "categories": [
+    25
+  ],
+  "date_created": "2026-10-03",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 1337,
+  "documentation": "https://docs.4gaboards.com/",
+  "website": "https://4gaboards.com/",
+  "repository": "https://github.com/RARgames/4gaBoards",
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "logo": "https://cdn.jsdelivr.net/gh/RARgames/4gaBoards@main/client/public/4gaboards512w.png",
+  "description": "4ga Boards is a self-hosted kanban board for realtime project management, originally a fork of Planka. Boards hold lists, cards and task lists with Markdown, labels, due dates, timers, comments and attachments, and users can sign in with Google, GitHub, Microsoft or OIDC.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/4gaboards.sh",
+      "config_path": "/opt/4gaboards_data/.env",
+      "resources": {
+        "cpu": 2,
+        "ram": 3072,
+        "hdd": 8,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": "admin",
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "The admin password is DEFAULT_ADMIN_PASSWORD in /opt/4gaboards_data/.env. Log in as admin and change it under Settings.",
+      "type": "info"
+    },
+    {
+      "text": "Registration is open: anyone who reaches the port can create an account. Turn off User Registration in Settings > Instance Settings if that is not wanted.",
+      "type": "warning"
+    },
+    {
+      "text": "Realtime updates only work from the address in BASE_URL (/opt/4gaboards_data/.env). Behind a reverse proxy or domain, change it, add TRUST_PROXY=1 and run systemctl restart 4gaboards.",
+      "type": "info"
+    }
+  ]
+}

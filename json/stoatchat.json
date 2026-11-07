@@ -8,12 +8,12 @@
     "type": "ct",
     "updateable": true,
     "privileged": false,
-    "has_arm": false,
-    "interface_port": 80,
+    "architectures": ["amd64"],
+    "interface_port": 443,
     "documentation": "https://github.com/stoatchat/self-hosted",
     "website": "https://stoat.chat",
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/stoatchat.webp",
-    "description": "A self-hostable open-source chat platform and community server. Stoatchat is a fork of Revolt, featuring real-time messaging, voice channels, file sharing, and a full-featured web client. Built with Rust (backend) and SolidJS (frontend).",
+    "description": "Stoatchat is an open-source chat platform and community server, forked from Revolt. It offers real-time messaging, voice channels, file sharing and a full-featured web client.",
     "install_methods": [
         {
             "type": "default",
@@ -34,20 +34,16 @@
     },
     "notes": [
         {
-            "text": "Initial setup takes 30-60 minutes due to Rust compilation and frontend build. Do not interrupt the process.",
+            "text": "Registration is open and the first account becomes the administrator. Register it right away, then set invite_only = true in /Revolt.toml to restrict sign-ups.",
             "type": "warning"
         },
         {
-            "text": "The first account registered becomes the instance administrator. Registration is open by default; set invite_only = true in /Revolt.toml to restrict it.",
-            "type": "info"
-        },
-        {
-            "text": "Voice and video calls require additional LiveKit setup. See https://github.com/stoatchat/self-hosted for details.",
-            "type": "info"
-        },
-        {
-            "text": "The files encryption key in /Revolt.toml is generated during installation. Back it up — losing it will make all uploaded files unreadable.",
+            "text": "Back up the files encryption key in /Revolt.toml. Without it, all uploaded files are unreadable.",
             "type": "warning"
+        },
+        {
+            "text": "Voice and video calls need a separate LiveKit setup, see https://github.com/stoatchat/self-hosted.",
+            "type": "info"
         }
     ]
 }

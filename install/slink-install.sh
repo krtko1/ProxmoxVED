@@ -2,7 +2,7 @@
 
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: MickLesk (CanbiZ)
-# License: MIT | https://github.com/community-scripts/ProxmoxVED/raw/main/LICENSE
+# License: MIT | https://github.com/community-scripts/DevScripts/raw/main/LICENSE
 # Source: https://github.com/andrii-kryvoviaz/slink
 
 source /dev/stdin <<<"$FUNCTIONS_FILE_PATH"
@@ -57,8 +57,9 @@ for i in 1 2 3 4 5; do
   COMPOSER_PROCESS_TIMEOUT=900 $STD composer install --no-dev --optimize-autoloader --no-interaction && break
   sleep 20
 done
-mkdir -p /opt/slink/{data,images}
+mkdir -p /opt/slink_data
 sed -i "s|'/services/api/|'/opt/slink/services/api/|" config/migrations/event_store.yaml
+sed -i "s|dir: '/app'|dir: '/opt/slink_data'|" config/settings.yaml
 $STD php bin/console lexik:jwt:generate-keypair --overwrite --no-interaction
 chmod 644 /opt/slink/services/api/config/jwt/private.pem
 touch /opt/slink/services/api/var/data/slink_store.db
@@ -69,6 +70,7 @@ systemctl start redis-server
 $STD php bin/console messenger:setup-transports --no-interaction
 $STD php bin/console slink:admin:init --no-interaction
 $STD php bin/console cache:warm --no-optional-warmers
+chown -R www-data:www-data /opt/slink/services/api/var /opt/slink_data
 msg_ok "Set up API"
 
 msg_info "Configuring Caddy"
@@ -78,7 +80,6 @@ cat <<EOF >/etc/caddy/Caddyfile
     root * /opt/slink/services/api/public
     php_fastcgi unix//run/php/php${PHP_VER}-fpm.sock
     file_server
-    encode gzip
 }
 EOF
 msg_ok "Configured Caddy"
@@ -91,6 +92,7 @@ NODE_ENV=production
 BODY_SIZE_LIMIT=Infinity
 ORIGIN=http://${LOCAL_IP}:3000
 API_URL=http://127.0.0.1:8080
+SESSION_TTL_SECONDS=2592000
 EOF
 cat <<'EOF' >/etc/systemd/system/slink-client.service
 [Unit]

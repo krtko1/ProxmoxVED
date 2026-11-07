@@ -13,7 +13,7 @@
     "documentation": "https://docs.waydro.id/",
     "website": "https://waydro.id/",
     "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/waydroid.webp",
-    "description": "Waydroid is a container-based approach to boot a full Android system on a regular GNU/Linux system. It uses Linux namespaces (LXC) to run Android in a container and bridges the Wayland compositor to display Android apps natively. This VM script creates a KVM virtual machine with Ubuntu 24.04 or Debian 13 as the base OS, ready for Waydroid installation.",
+    "description": "Waydroid boots a full Android system in a container on a regular Linux system and shows Android apps natively through a Wayland compositor. This VM runs it on Ubuntu 24.04 or Debian 13.",
     "install_methods": [
         {
             "type": "default",
@@ -34,19 +34,15 @@
     },
     "notes": [
         {
-            "text": "The OS can be selected during setup: Ubuntu 24.04 LTS or Debian 13 (Trixie). The default user is 'ubuntu' for Ubuntu and 'debian' for Debian.",
+            "text": "Log in as ubuntu (debian on Debian 13) with your Cloud-Init credentials and download Android once: sudo waydroid init && sudo systemctl restart waydroid-container.",
             "type": "info"
         },
         {
-            "text": "Waydroid + Weston (Wayland compositor) are pre-installed. After first boot run: sudo waydroid init && sudo systemctl start waydroid-container. Then start the UI with: weston --backend=headless & && WAYLAND_DISPLAY=wayland-0 waydroid show-full-ui",
+            "text": "On the VM console (noVNC, not the serial console), run weston: Android opens full-screen, and closing it returns to the console.",
             "type": "info"
         },
         {
-            "text": "Waydroid requires a running Wayland compositor. For headless setups install 'weston'. GPU acceleration requires VirtIO GPU or GPU passthrough.",
-            "type": "info"
-        },
-        {
-            "text": "Enable Cloud-Init during setup to configure SSH keys and network automatically.",
+            "text": "GPU acceleration needs a VirtIO GPU or GPU passthrough.",
             "type": "info"
         }
     ]

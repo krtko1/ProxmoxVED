@@ -1,0 +1,45 @@
+{
+  "name": "RSSHub",
+  "slug": "rsshub",
+  "categories": [
+    12
+  ],
+  "date_created": "2026-08-03",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "architectures": ["amd64"],
+  "interface_port": 1200,
+  "documentation": "https://docs.rsshub.app/",
+  "website": "https://rsshub.app/",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/rsshub.webp",
+  "description": "RSSHub generates RSS feeds for sites that do not offer them - social networks, video platforms, shops, forums, news outlets and hundreds more, through community-maintained route definitions. Feed the resulting URLs into any reader such as FreshRSS, Miniflux or CommaFeed.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/rsshub.sh",
+      "config_path": "/opt/rsshub.env",
+      "resources": {
+        "cpu": 2,
+        "ram": 4096,
+        "hdd": 12,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "The instance is open to anyone who can reach it. Before exposing it, uncomment ACCESS_KEY in /opt/rsshub.env, restart rsshub and add ?key=... to your feed URLs, or strangers can use it to scrape other sites.",
+      "type": "warning"
+    },
+    {
+      "text": "Routes that need credentials (some social networks) take extra variables in /opt/rsshub.env; see the upstream route documentation.",
+      "type": "info"
+    }
+  ]
+}

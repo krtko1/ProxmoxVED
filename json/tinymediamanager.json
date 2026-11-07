@@ -1,0 +1,34 @@
+{
+  "name": "tinyMediaManager",
+  "slug": "tinymediamanager",
+  "categories": [13],
+  "date_created": "2026-09-20",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 6080,
+  "documentation": "https://www.tinymediamanager.org/docs/",
+  "website": "https://www.tinymediamanager.org/",
+  "repository": "https://gitlab.com/tinyMediaManager/tinyMediaManager",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/tinymediamanager.webp",
+  "description": "tinyMediaManager is a media library manager for organizing and scraping metadata, artwork, and NFO files for movies and TV shows, ready for Kodi, Plex, Jellyfin and Emby. Browser access is the desktop UI via noVNC.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/tinymediamanager.sh",
+      "config_path": "/opt/tinymediamanager/data",
+      "resources": {
+        "cpu": 4,
+        "ram": 4096,
+        "hdd": 12,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": []
+}

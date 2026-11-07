@@ -1,0 +1,37 @@
+name: ct scripts base
+
+# A ct/ script fetched with curl cannot tell the engine where it came from;
+# without this line core falls back to ProxmoxVE and the install script 404s.
+
+on:
+  pull_request:
+    paths:
+      - "ct/*.sh"
+      - ".github/workflows/ct-base.yml"
+  push:
+    branches: [main]
+    paths:
+      - "ct/*.sh"
+      - ".github/workflows/ct-base.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Every ct/ script names this repo as its scripts base
+        run: |
+          set -euo pipefail
+          want='_CS_DEFAULT_URL="https://raw.githubusercontent.com/community-scripts/DevScripts/main"'
+          fail=0
+          for f in ct/*.sh; do
+            if ! grep -qxF "$want" "$f"; then
+              echo "::error file=$f::missing or wrong _CS_DEFAULT_URL line; the engine would fetch install/ from ProxmoxVE"
+              fail=1
+            fi
+          done
+          exit $fail

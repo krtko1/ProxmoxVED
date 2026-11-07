@@ -1,0 +1,49 @@
+{
+  "name": "FalkorDB",
+  "slug": "falkordb",
+  "categories": [
+    8
+  ],
+  "date_created": "2026-10-03",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "interface_port": 3000,
+  "documentation": "https://docs.falkordb.com/",
+  "website": "https://www.falkordb.com/",
+  "repository": "https://github.com/FalkorDB/FalkorDB",
+  "logo": "https://cdn.jsdelivr.net/gh/FalkorDB/falkordb-browser@main/public/icons/F-light.svg",
+  "description": "FalkorDB is a low-latency property graph database built on sparse matrices (GraphBLAS), aimed at knowledge graphs and GraphRAG. It runs as a Redis module queried with OpenCypher from any Redis client, and FalkorDB Browser adds a web UI for queries and exploring graphs.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/falkordb.sh",
+      "config_path": "/etc/redis/falkordb.conf",
+      "resources": {
+        "cpu": 2,
+        "ram": 4096,
+        "hdd": 10,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Log in to FalkorDB Browser with host localhost, port 6379, an empty username and the requirepass password from /etc/redis/falkordb.conf.",
+      "type": "info"
+    },
+    {
+      "text": "If you open the browser under another address (new IP, hostname, reverse proxy), set NEXTAUTH_URL in /opt/falkordb-browser_data/.env and run systemctl restart falkordb-browser.",
+      "type": "info"
+    }
+  ]
+}

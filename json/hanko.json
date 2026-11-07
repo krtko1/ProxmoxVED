@@ -1,0 +1,53 @@
+{
+  "name": "Hanko",
+  "slug": "hanko",
+  "categories": [
+    6
+  ],
+  "date_created": "2026-10-05",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "interface_port": 8000,
+  "documentation": "https://docs.hanko.io/",
+  "website": "https://www.hanko.io/",
+  "repository": "https://github.com/teamhanko/hanko",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/hanko.webp",
+  "description": "Hanko is an open-source authentication and user management backend, an alternative to Auth0 or Clerk. It provides passkeys, passwords, email passcodes, MFA and single sign-on, and web apps add the login through the Hanko Elements web components or SDKs.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/hanko.sh",
+      "config_path": "/opt/hanko_data/config.yaml",
+      "resources": {
+        "cpu": 1,
+        "ram": 512,
+        "hdd": 4,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Hanko is an API, not a web app: port 8000 only shows a status page and there is no admin UI. Your own app's login talks to it through Hanko Elements or the SDKs.",
+      "type": "info"
+    },
+    {
+      "text": "Passkeys need HTTPS on a domain name. Publish port 8000 through a TLS reverse proxy, put that domain and your SMTP server in /opt/hanko_data/config.yaml and run systemctl restart hanko.",
+      "type": "warning"
+    },
+    {
+      "text": "The admin API on 127.0.0.1:8001 has no authentication. Anyone who reaches it can sign in as any user, so never expose it without a firewall or an authenticating proxy.",
+      "type": "warning"
+    }
+  ]
+}
